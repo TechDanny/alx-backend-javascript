@@ -6,6 +6,15 @@ interface PrintTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
+interface StudentClassConstructor {
+  new (firstName: string, lastName: string): StudentClass;
+}
+
+interface StudentClass {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
 interface Teacher {
     readonly firstName: string;
     readonly lastName: string;
@@ -31,6 +40,26 @@ interface Teacher {
         this.numberOfReports = numberOfReports;
     }
 }
+
+class StudentClass implements StudentClass {
+  private firstName: string;
+  private lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+      return "Currently working";
+  }
+
+  displayName(): string {
+      return this.firstName;
+  }
+}
+
+
 const printTeacher: PrintTeacherFunction = (firstName: string, lastName: string): string => {
   const firstLetter = firstName.charAt(0).toUpperCase();
 
