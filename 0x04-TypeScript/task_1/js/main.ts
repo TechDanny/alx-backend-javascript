@@ -1,12 +1,33 @@
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
 interface Teacher {
     readonly firstName: string;
     readonly lastName: string;
     readonly fullTimeEmployee: boolean;
     readonly yearsOfExperience?: number;
     readonly location: string;
-    [key: string]: any; // Allow any additional attribute
+    [key: string]: any;
   }
   
+  class SchoolDirector implements Directors {
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly fullTimeEmployee: boolean;
+    readonly yearsOfExperience?: number;
+    readonly location: string;
+    numberOfReports: number;
+
+    constructor(firstName: string, lastName: string, fullTimeEmployee: boolean, location: string, numberOfReports: number) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fullTimeEmployee = fullTimeEmployee;
+        this.location = location;
+        this.numberOfReports = numberOfReports;
+    }
+}
+
     function createTeacher(
     firstName: string,
     lastName: string,
@@ -23,6 +44,7 @@ interface Teacher {
   
   const teacher1: Teacher = createTeacher("Danny", "Koki", true, { yearsOfExperience: 4, location: "Nairobi" });
   const teacher2: Teacher = createTeacher("Stella", "Kyallo", false, { location: "Machakos", contract: true });
+  const director: Directors = new SchoolDirector("Musau", "Koki", true, "Naivasha", 7);
   
   const teachersList: Teacher[] = [teacher1, teacher2];
   
