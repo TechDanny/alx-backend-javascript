@@ -1,6 +1,7 @@
 const calculateNumber = require('./0-calcul');
-const assert = require('assert')
+const assert = require('assert');
 
+describe('calculateNumber', function() {
 describe('Test with two whole numbers', function() {
   it('Answer is 4', function() {
     assert.strictEqual(calculateNumber(1, 3), 4);
@@ -20,4 +21,5 @@ describe('Test with two float numbers', function() {
   it('Answer is 6', function() {
     assert.strictEqual(calculateNumber(1.5, 3.7), 6);
   });
+});
 });
