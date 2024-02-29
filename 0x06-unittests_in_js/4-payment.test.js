@@ -1,14 +1,13 @@
 const sinon = require('sinon');
 const chai = require('chai');
 const expect = chai.expect;
-const stub = sinon.stub;
 
 const sendPaymentRequestToApi = require('./4-payment.js');
 const utils = require('./utils');
 
 describe('stub test', function () {
     it('Test math is the same', () => {
-      const stubU = stub(utils, 'calculateNumber');
+      const stubU = sinon.stub(utils, 'calculateNumber');
       stubU.returns(10);
       const spyC = sinon.spy(console, 'log');
   
