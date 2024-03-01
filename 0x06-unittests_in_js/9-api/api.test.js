@@ -33,3 +33,16 @@ describe('GET /cart/18', () => {
       });
     });
   });
+  describe('GET /cart/hello', () => {
+    it('404', (done) => {
+      const opt = {
+        url: 'http://localhost:7865/cart/hello',
+        method: 'GET',
+      };
+
+      request(opt, function (error, response, body) {
+        expect(response.statusCode).to.equal(404);
+        done();
+      });
+    });
+  });
