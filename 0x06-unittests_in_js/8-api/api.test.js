@@ -1,20 +1,14 @@
 const request = require('request');
-const chai = require('chai');
-const expect = chai.expect;
+const { expect } = require('chai');
 
-describe('Basic Integration testing', () => {
-  describe('home route', () => {
-    it('correct status code', (done) => {
-      const opt = {
-        url: 'http://localhost:7865',
-        method: 'GET',
-      };
+describe('integration test', () => {
+  const URL = 'http://localhost:7865';
 
-      request(opt, function (error, response, body) {
-        expect(response.statusCode).to.equal(200);
-        expect(body).to.equal('Welcome to the payment system');
-        done();
-      });
+  it('GET / returns correct response', (done) => {
+    request.get(`${URL}/`, (_err, res, body) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(body).to.be.equal('Welcome to the payment system');
+      done();
     });
   });
 });
